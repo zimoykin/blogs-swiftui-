@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct travelApp: App {
+    
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {

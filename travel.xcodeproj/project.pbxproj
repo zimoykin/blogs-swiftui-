@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A741E3625B4C1F200FE871A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E3525B4C1F200FE871A /* Persistence.swift */; };
+		0A741E7E25B4C5A700FE871A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E7D25B4C5A700FE871A /* NetworkManager.swift */; };
+		0A741E8325B4C5AB00FE871A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E8225B4C5AA00FE871A /* Constants.swift */; };
+		0A741E8825B4C5B000FE871A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E8725B4C5B000FE871A /* UserModel.swift */; };
+		0A741E9425B4C63E00FE871A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E9325B4C63E00FE871A /* Extensions.swift */; };
+		0A741E9B25B4E28500FE871A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E9A25B4E28500FE871A /* LoginView.swift */; };
+		0A741EAD25B4E44700FE871A /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741EAC25B4E44700FE871A /* BlogModel.swift */; };
+		0A741EBE25B4E63300FE871A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741EBD25B4E63300FE871A /* DataManager.swift */; };
 		0AB4513625B4AC0400359714 /* travelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4513525B4AC0400359714 /* travelApp.swift */; };
 		0AB4513825B4AC0400359714 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4513725B4AC0400359714 /* ContentView.swift */; };
 		0AB4513A25B4AC0500359714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4513925B4AC0500359714 /* Assets.xcassets */; };
 		0AB4513D25B4AC0500359714 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4513C25B4AC0500359714 /* Preview Assets.xcassets */; };
-		0AB4513F25B4AC0500359714 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4513E25B4AC0500359714 /* Persistence.swift */; };
 		0AB4514225B4AC0500359714 /* travel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4514025B4AC0500359714 /* travel.xcdatamodeld */; };
 		0AB4514D25B4AC0600359714 /* travelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4514C25B4AC0600359714 /* travelTests.swift */; };
 		0AB4515825B4AC0600359714 /* travelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4515725B4AC0600359714 /* travelUITests.swift */; };
+		0AB4516925B4B0E900359714 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4516825B4B0E900359714 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +43,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A741E3525B4C1F200FE871A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		0A741E7D25B4C5A700FE871A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0A741E8225B4C5AA00FE871A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0A741E8725B4C5B000FE871A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		0A741E9325B4C63E00FE871A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0A741E9A25B4E28500FE871A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0A741EAC25B4E44700FE871A /* BlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
+		0A741EBD25B4E63300FE871A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0AB4513225B4AC0400359714 /* travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB4513525B4AC0400359714 /* travelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travelApp.swift; sourceTree = "<group>"; };
 		0AB4513725B4AC0400359714 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0AB4513925B4AC0500359714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AB4513C25B4AC0500359714 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0AB4513E25B4AC0500359714 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0AB4514125B4AC0500359714 /* travel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = travel.xcdatamodel; sourceTree = "<group>"; };
 		0AB4514325B4AC0500359714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AB4514825B4AC0600359714 /* travelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +64,7 @@
 		0AB4515325B4AC0600359714 /* travelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = travelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB4515725B4AC0600359714 /* travelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travelUITests.swift; sourceTree = "<group>"; };
 		0AB4515925B4AC0600359714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AB4516825B4B0E900359714 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +92,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A741E7C25B4C59900FE871A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A741E9225B4C62D00FE871A /* Extension */,
+				0A741E8225B4C5AA00FE871A /* Constants.swift */,
+				0A741E8725B4C5B000FE871A /* UserModel.swift */,
+				0A741E7D25B4C5A700FE871A /* NetworkManager.swift */,
+				0A741EAC25B4E44700FE871A /* BlogModel.swift */,
+				0A741EBD25B4E63300FE871A /* DataManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0A741E9225B4C62D00FE871A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0A741E9325B4C63E00FE871A /* Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0A741E9F25B4E3E100FE871A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0AB4513725B4AC0400359714 /* ContentView.swift */,
+				0A741E9A25B4E28500FE871A /* LoginView.swift */,
+				0AB4516825B4B0E900359714 /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0AB4512925B4AC0400359714 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +146,11 @@
 		0AB4513425B4AC0400359714 /* travel */ = {
 			isa = PBXGroup;
 			children = (
+				0A741E9F25B4E3E100FE871A /* Views */,
+				0A741E7C25B4C59900FE871A /* Models */,
+				0A741E3525B4C1F200FE871A /* Persistence.swift */,
 				0AB4513525B4AC0400359714 /* travelApp.swift */,
-				0AB4513725B4AC0400359714 /* ContentView.swift */,
 				0AB4513925B4AC0500359714 /* Assets.xcassets */,
-				0AB4513E25B4AC0500359714 /* Persistence.swift */,
 				0AB4514325B4AC0500359714 /* Info.plist */,
 				0AB4514025B4AC0500359714 /* travel.xcdatamodeld */,
 				0AB4513B25B4AC0500359714 /* Preview Content */,
@@ -265,9 +313,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB4513F25B4AC0500359714 /* Persistence.swift in Sources */,
+				0A741E7E25B4C5A700FE871A /* NetworkManager.swift in Sources */,
+				0A741EBE25B4E63300FE871A /* DataManager.swift in Sources */,
+				0A741E9425B4C63E00FE871A /* Extensions.swift in Sources */,
+				0A741E3625B4C1F200FE871A /* Persistence.swift in Sources */,
+				0A741E8825B4C5B000FE871A /* UserModel.swift in Sources */,
 				0AB4514225B4AC0500359714 /* travel.xcdatamodeld in Sources */,
 				0AB4513825B4AC0400359714 /* ContentView.swift in Sources */,
+				0A741EAD25B4E44700FE871A /* BlogModel.swift in Sources */,
+				0A741E8325B4C5AB00FE871A /* Constants.swift in Sources */,
+				0AB4516925B4B0E900359714 /* MainView.swift in Sources */,
+				0A741E9B25B4E28500FE871A /* LoginView.swift in Sources */,
 				0AB4513625B4AC0400359714 /* travelApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
