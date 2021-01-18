@@ -12,7 +12,7 @@ import Combine
 
 struct DataManager {
     
-    static func getUser () {
+    static func getRef () {
         
        
         

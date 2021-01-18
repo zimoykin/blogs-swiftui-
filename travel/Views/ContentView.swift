@@ -15,15 +15,14 @@ struct ContentView: View {
     @State private var password: String = ""
     
     @ObservedObject private var user = UserObserver()
+    @Environment(\.managedObjectContext) private var moc
     
     var body: some View {
-        
-        if user.logined {
-            MainView()
+        if let user = user.user {
+            MainView(user: user, moc: moc)
         } else {
-            LoginView(user: user)
+            LoginView(user: user, moc: moc)
         }
-        
     }
 
 }

@@ -14,7 +14,7 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        //let newItem = UserModel(context: viewContext)
+        let newItem = UserModel(context: viewContext)
         do {
             try viewContext.save()
         } catch {
