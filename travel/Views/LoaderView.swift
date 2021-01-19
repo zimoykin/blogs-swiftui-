@@ -16,7 +16,7 @@ struct LoaderView: View {
     
         ZStack {
             Circle()
-                .frame(width: 200, height: 200)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
                 .foregroundColor(Color(.systemGray5))
 
             Image(systemName: "heart.fill")
@@ -24,6 +24,7 @@ struct LoaderView: View {
                 .font(.system(size: 200))
                 .animation(nil)
                 .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+                .opacity(heartSizeChanged ? 1.0 : 0)
                 .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
         }
         .onAppear {

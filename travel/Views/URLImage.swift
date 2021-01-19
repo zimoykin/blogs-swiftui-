@@ -12,55 +12,59 @@ struct URLImage: View {
     
     @ObservedObject var imageLoader: ImageLoader
     @ObservedObject var blog: BlogModel
-    @State var image: UIImage = UIImage()
-    @State var images: [String] = [String]()
-    @State var isLoading: Bool = false
     
+    @State var image: UIImage?
+    @State var images: [String] = [String]()
+   
     var user: UserModel
     
     init(imageURL: String, _ blog: BlogModel, user: UserModel) {
-        imageLoader = ImageLoader(urlString: imageURL)
+        imageLoader = ImageLoader(imageURL: imageURL)
         self.blog = blog
         self.user = user
     }
     
     var body: some View {
         
-        if blog.images == nil && isLoading {
-            VStack(alignment: .center, spacing: 0) {
-                LoaderView()
-            }
-        } else {
+        Button(action: {
+            image = nil
+            changeImage()
             
-            Button(action: {
-             
-                if blog.images == nil {
-                    isLoading = true
-                    blog.getAllImages (user: user.getUser()!)
+        }) {
+            VStack{
+                
+                if let image = image {
+                    Image(uiImage: image).resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width:getScreenWidth(), height: getScreenWidth(), alignment: .center)
+                        .edgesIgnoringSafeArea(.all)
+                        .clipped()
                 } else {
-                    
+                    LoaderView()
                 }
                 
-            }) {
-               Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:getScreenWidth(), alignment: .center)
-                    .onReceive(imageLoader.didChange) { data in
-                        self.image = UIImage(data: data) ?? UIImage()
-                    }.edgesIgnoringSafeArea(.all)
-                    .clipped()
-                .onReceive(blog.$images) { imagePath in
-                    print (imagePath)
-                }
-                
+            }.onReceive( imageLoader.didChange ) { data in
+                self.image = UIImage(data: data) ?? UIImage()
             }
         }
+        
     }
     
     
     func getScreenWidth () -> CGFloat {
         UIScreen.main.bounds.width
     }
-
+    
+    func changeImage () {
+        
+        if let images = blog.images, let currentImage = blog.current_image {
+            if let currentIndex = images.firstIndex(of: currentImage) {
+                let newIndex = currentIndex+1 < images.count ? currentIndex+1 : 0
+                imageLoader.getImages( images[newIndex] )
+                blog.current_image = images[newIndex]
+            }
+        }
+        
+    }
+    
 }

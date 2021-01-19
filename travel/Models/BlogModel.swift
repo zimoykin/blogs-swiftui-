@@ -12,8 +12,9 @@ import Combine
 class BlogModel: ObservableObject {
     
     @Published var blogContent: BlogContent?
-    @Published var images: [String]?
-    @Published var id: UUID
+    var current_image: String?
+    var images: [String]?
+    var id: UUID
 
     init (_ id: UUID) {
         self.id = id
@@ -29,8 +30,11 @@ class BlogModel: ObservableObject {
         } receiveValue: { blog in
             DispatchQueue.main.async {
                 self.blogContent = blog
+                self.current_image = blog.image
             }
         }.store(in: &cancellables)
+        
+        getAllImages(user: user)
         
     }
     

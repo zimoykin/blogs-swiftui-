@@ -28,7 +28,7 @@ struct BlogView: View {
                     ).frame(width: getBlogSize(), height: 40, alignment: .center)
                 }
                 URLImage(imageURL: content.image, blog, user: user)
-                Text(content.description)
+                Text(content.description.prefix(200))
                     .fontWeight(.ultraLight)
                     .italic()
                     .padding(30)
