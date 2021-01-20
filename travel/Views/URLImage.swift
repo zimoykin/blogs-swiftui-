@@ -15,6 +15,9 @@ struct URLImage: View {
     
     @State var image: UIImage?
     @State var images: [String] = [String]()
+    
+    //
+    @State private var opacity: Double = 1
    
     var user: UserModel
     
@@ -32,7 +35,6 @@ struct URLImage: View {
             
         }) {
             VStack{
-                
                 if let image = image {
                     Image(uiImage: image).resizable()
                         .aspectRatio(contentMode: .fill)
@@ -42,7 +44,6 @@ struct URLImage: View {
                 } else {
                     LoaderView()
                 }
-                
             }.onReceive( imageLoader.didChange ) { data in
                 self.image = UIImage(data: data) ?? UIImage()
             }
@@ -51,9 +52,7 @@ struct URLImage: View {
     }
     
     
-    func getScreenWidth () -> CGFloat {
-        UIScreen.main.bounds.width
-    }
+    func getScreenWidth () -> CGFloat { UIScreen.main.bounds.width }
     
     func changeImage () {
         
