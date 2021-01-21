@@ -11,32 +11,61 @@ import Combine
 
 struct MainView: View {
     
-    var user: UserModel
     @ObservedObject var blogPage = Blog()
+    var user: UserModel
     var moc: NSManagedObjectContext
     @State var errorText: String = ""
+    var title: String = "Blog"
     
     var body: some View {
-        if let blogs = blogPage.blogs  {
-            List{
-                ForEach(blogs, id: \.uuidString) { result in
-                    BlogView(result, user: user)
-                }
-            }
-        } else {
-            VStack(alignment: .center, spacing: 0) {
-                if errorText != "" {
-                    Text("\(errorText)").italic().shadow(color: .gray, radius: 1, x: 1, y: 1)
+        
+        TabView {
+            VStack {
+                
+                if let blogs = blogPage.blogs {
+                    VStack(alignment: .center, spacing: 0) {
+                        List{
+                            ForEach(blogs, id: \.uuidString) { result in
+                                BlogView(result, user: user)
+                            }
+                        }
+                    }.navigationBarTitle(Text(title))
                 } else {
-                    if blogPage.blogs == nil {
-                        Text("loading")
-                            .padding()
-                    }
+                    VStack(alignment: .center, spacing: 0) {
+                        if errorText != "" {
+                            Text("\(errorText)").italic().shadow(color: .gray, radius: 1, x: 1, y: 1)
+                        } else {
+                            if blogPage.blogs == nil {
+                                Text("loading")
+                                    .padding()
+                            }
+                        }
+                    }.onAppear {
+                        callgetBlogs()
+                    }.navigationBarTitle(Text(title))
                 }
-            }.onAppear {
-                callgetBlogs()
             }
-        }
+                 .tabItem {
+                     Image(systemName: "house.fill")
+                     Text("Blogs")
+             }
+             CreateNewView()
+                 .tabItem {
+                     Image(systemName: "plus.app.fill")
+                     Text("New Blog")
+             }
+            AuthorizationView(user: user, moc: moc)
+                 .tabItem {
+                     Image(systemName: "person.fill")
+                     Text("Authorization")
+             }
+            ContactsView()
+                .tabItem {
+                    Image(systemName:"creditcard.fill")
+                    Text("Contacts")
+            }
+            
+         }
     }
     
     private func callgetBlogs () {

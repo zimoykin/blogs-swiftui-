@@ -13,15 +13,16 @@ struct ContentView: View {
 
     @State private var username: String = ""
     @State private var password: String = ""
+    @FetchRequest(entity: UserModel.entity(), sortDescriptors: [])
+    var user: FetchedResults<UserModel>
     
-    @ObservedObject private var user = UserObserver()
     @Environment(\.managedObjectContext) private var moc
     
     var body: some View {
-        if let user = user.user {
+        if let user = user.first {
             MainView(user: user, moc: moc)
         } else {
-            LoginView(user: user, moc: moc)
+            AuthorizationView(user: user.first, moc: moc)
         }
     }
 

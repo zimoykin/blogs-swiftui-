@@ -44,7 +44,7 @@ struct URLImage: View {
                 } else {
                     LoaderView()
                 }
-            }.onReceive( imageLoader.didChange ) { data in
+            }.onReceive(imageLoader.didChange) { data in
                 self.image = UIImage(data: data) ?? UIImage()
             }
         }

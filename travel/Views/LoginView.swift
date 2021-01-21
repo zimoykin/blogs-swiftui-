@@ -7,10 +7,6 @@ struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     
-    @FetchRequest(entity: UserModel.entity(), sortDescriptors: [])
-    var users: FetchedResults<UserModel>
-    
-    @ObservedObject var user: UserObserver
     var moc: NSManagedObjectContext
 
     var body: some View {
@@ -21,12 +17,12 @@ struct LoginView: View {
             SecureField("password", text: $password)
                 .fixedSize(horizontal: true, vertical: true)
             Button("Login") {
-                user.login(username, password, moc: moc)
+                UserModel.login(username, password, moc: moc).sink(receiveValue: {
+                   print ($0)
+                })
             }.padding()
             .onAppear {
-                if users.count > 0 {
-                    user.user = users[0]
-                }
+
             }
         }
     }

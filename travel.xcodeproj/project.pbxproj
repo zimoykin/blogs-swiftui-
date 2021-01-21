@@ -14,6 +14,9 @@
 		0A03770825B5A16A00DC7652 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03770725B5A16A00DC7652 /* JWT.swift */; };
 		0A03771025B5E26300DC7652 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03770F25B5E26300DC7652 /* URLImage.swift */; };
 		0A03771525B609E400DC7652 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03771425B609E400DC7652 /* LoaderView.swift */; };
+		0A6C89A725B9FC2100357A75 /* CreateNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C89A625B9FC2100357A75 /* CreateNewView.swift */; };
+		0A6C89AC25BA00CD00357A75 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C89AB25BA00CD00357A75 /* AuthorizationView.swift */; };
+		0A6C89B125BA00EE00357A75 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C89B025BA00EE00357A75 /* ContactsView.swift */; };
 		0A741E3625B4C1F200FE871A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E3525B4C1F200FE871A /* Persistence.swift */; };
 		0A741E7E25B4C5A700FE871A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E7D25B4C5A700FE871A /* NetworkManager.swift */; };
 		0A741E8325B4C5AB00FE871A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E8225B4C5AA00FE871A /* Constants.swift */; };
@@ -57,6 +60,9 @@
 		0A03770725B5A16A00DC7652 /* JWT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
 		0A03770F25B5E26300DC7652 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		0A03771425B609E400DC7652 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		0A6C89A625B9FC2100357A75 /* CreateNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewView.swift; sourceTree = "<group>"; };
+		0A6C89AB25BA00CD00357A75 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
+		0A6C89B025BA00EE00357A75 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		0A741E3525B4C1F200FE871A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0A741E7D25B4C5A700FE871A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0A741E8225B4C5AA00FE871A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 				0A0376FD25B5858700DC7652 /* BlogView.swift */,
 				0A03770F25B5E26300DC7652 /* URLImage.swift */,
 				0A03771425B609E400DC7652 /* LoaderView.swift */,
+				0A6C89A625B9FC2100357A75 /* CreateNewView.swift */,
+				0A6C89AB25BA00CD00357A75 /* AuthorizationView.swift */,
+				0A6C89B025BA00EE00357A75 /* ContactsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,10 +346,13 @@
 				0A741E7E25B4C5A700FE871A /* NetworkManager.swift in Sources */,
 				0A03771025B5E26300DC7652 /* URLImage.swift in Sources */,
 				0A741EBE25B4E63300FE871A /* DataManager.swift in Sources */,
+				0A6C89A725B9FC2100357A75 /* CreateNewView.swift in Sources */,
 				0A741E9425B4C63E00FE871A /* Extensions.swift in Sources */,
+				0A6C89AC25BA00CD00357A75 /* AuthorizationView.swift in Sources */,
 				0A741E3625B4C1F200FE871A /* Persistence.swift in Sources */,
 				0A741E8825B4C5B000FE871A /* UserModel.swift in Sources */,
 				0A03770325B589CE00DC7652 /* Pagination.swift in Sources */,
+				0A6C89B125BA00EE00357A75 /* ContactsView.swift in Sources */,
 				0A03771525B609E400DC7652 /* LoaderView.swift in Sources */,
 				0AB4514225B4AC0500359714 /* travel.xcdatamodeld in Sources */,
 				0A03770825B5A16A00DC7652 /* JWT.swift in Sources */,
