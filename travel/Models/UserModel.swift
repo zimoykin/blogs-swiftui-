@@ -17,6 +17,12 @@ struct User: Codable {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
     }
+    
+    struct Public: Codable {
+        var id: UUID
+        var username: String
+        var image: String
+    }
 }
 
 

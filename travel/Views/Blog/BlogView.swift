@@ -32,6 +32,10 @@ struct BlogView: View {
                     .fontWeight(.ultraLight)
                     .italic()
                     .padding(30)
+                HStack{
+                    AuthorView_Tags(blog: blog, user: user.getUser()!)
+                    EmotionView(blog: blog, user: user.getUser()!)
+                }
             } else {
                 Text("loading")
             }

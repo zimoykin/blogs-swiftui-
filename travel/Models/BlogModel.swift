@@ -20,7 +20,7 @@ class BlogModel: ObservableObject {
         self.id = id
     }
 
-    private var cancellables = [AnyCancellable]()
+    var cancellables = [AnyCancellable]()
 
     func getBlog (user: User) {
 
@@ -67,6 +67,7 @@ struct BlogContent: Codable {
     var description: String
     var id: UUID
     var image: String
+    var tags: [String]
 }
 
 class Blog: ObservableObject {

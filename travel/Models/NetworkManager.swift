@@ -95,8 +95,10 @@ struct NetworkManager {
                 
                 if let data = data {
                     guard let decodedData = try? JSONDecoder().decode(T.self, from: data)
-                    else { promise(.failure( NetworkError(description: "cant decode data")) )
-                        return }
+                    else {
+                        promise(.failure( NetworkError(description: "cant decode data")) )
+                        return
+                    }
                     
                     return promise(.success(decodedData))
                 }
