@@ -7,7 +7,9 @@
 import CoreData
 import SwiftUI
 
-struct AuthorizationView: View {
+struct AuthorizationView: View, ModelScreen {
+    static var icon: String = "person.fill"
+    
     
     var user: UserModel?
     var moc: NSManagedObjectContext
@@ -21,7 +23,7 @@ struct AuthorizationView: View {
                 VStack(alignment: .center, spacing: 0){
                     Text("Hello \(user!.username!)")
                     Button("logout") {
-                        moc.delete(user!)
+                        user?.logout(moc: moc)
                     }
                 }
             }

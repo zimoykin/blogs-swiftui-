@@ -34,14 +34,17 @@ struct BlogView: View {
                     .padding(30)
                 HStack{
                     AuthorView_Tags(blog: blog, user: user.getUser()!)
-                    EmotionView(blog: blog, user: user.getUser()!)
-                }
+                    Spacer()
+                    EmotionView(blog: blog, user: user)
+                }.background(LinearGradient(gradient: Gradient(colors: [.gray, .black]), startPoint: .leading, endPoint: .trailing))
             } else {
                 Text("loading")
             }
         }.listRowInsets(EdgeInsets())
-        .onAppear{
-            blog.getBlog(user: user.getUser()!)
+        .onAppear {
+            if blog.blogContent == nil {
+                blog.getBlog(user: user.getUser()!)
+            }
         }
     }
     

@@ -28,6 +28,9 @@
 		0A741E9B25B4E28500FE871A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741E9A25B4E28500FE871A /* LoginView.swift */; };
 		0A741EAD25B4E44700FE871A /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741EAC25B4E44700FE871A /* BlogModel.swift */; };
 		0A741EBE25B4E63300FE871A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A741EBD25B4E63300FE871A /* DataManager.swift */; };
+		0A98F39725BC6486000FBC25 /* Place+Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98F39625BC6485000FBC25 /* Place+Country.swift */; };
+		0A98F39C25BCAD6F000FBC25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98F39B25BCAD6F000FBC25 /* HomeView.swift */; };
+		0A98F3A125BCCCA3000FBC25 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98F3A025BCCCA3000FBC25 /* MapView.swift */; };
 		0AB4513625B4AC0400359714 /* travelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4513525B4AC0400359714 /* travelApp.swift */; };
 		0AB4513825B4AC0400359714 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4513725B4AC0400359714 /* ContentView.swift */; };
 		0AB4513A25B4AC0500359714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4513925B4AC0500359714 /* Assets.xcassets */; };
@@ -77,6 +80,9 @@
 		0A741E9A25B4E28500FE871A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0A741EAC25B4E44700FE871A /* BlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
 		0A741EBD25B4E63300FE871A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		0A98F39625BC6485000FBC25 /* Place+Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+Country.swift"; sourceTree = "<group>"; };
+		0A98F39B25BCAD6F000FBC25 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0A98F3A025BCCCA3000FBC25 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		0AB4513225B4AC0400359714 /* travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB4513525B4AC0400359714 /* travelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travelApp.swift; sourceTree = "<group>"; };
 		0AB4513725B4AC0400359714 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 				0A0376FD25B5858700DC7652 /* BlogView.swift */,
 				0A6C89B625BB15F800357A75 /* EmotionView.swift */,
 				0A6C89C025BB6D3D00357A75 /* AuthorView+Tags.swift */,
+				0A98F39B25BCAD6F000FBC25 /* HomeView.swift */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 				0A741EBD25B4E63300FE871A /* DataManager.swift */,
 				0A03770225B589CE00DC7652 /* Pagination.swift */,
 				0A6C89BB25BB18F800357A75 /* EmotionModel.swift */,
+				0A98F39625BC6485000FBC25 /* Place+Country.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 				0A6C89A625B9FC2100357A75 /* CreateNewView.swift */,
 				0A6C89AB25BA00CD00357A75 /* AuthorizationView.swift */,
 				0A6C89B025BA00EE00357A75 /* ContactsView.swift */,
+				0A98F3A025BCCCA3000FBC25 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,9 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A98F39C25BCAD6F000FBC25 /* HomeView.swift in Sources */,
 				0A741E7E25B4C5A700FE871A /* NetworkManager.swift in Sources */,
 				0A6C89BC25BB18F800357A75 /* EmotionModel.swift in Sources */,
 				0A6C89B725BB15F800357A75 /* EmotionView.swift in Sources */,
+				0A98F39725BC6486000FBC25 /* Place+Country.swift in Sources */,
 				0A03771025B5E26300DC7652 /* URLImage.swift in Sources */,
 				0A741EBE25B4E63300FE871A /* DataManager.swift in Sources */,
 				0A6C89A725B9FC2100357A75 /* CreateNewView.swift in Sources */,
@@ -379,6 +390,7 @@
 				0AB4513825B4AC0400359714 /* ContentView.swift in Sources */,
 				0A0376FE25B5858700DC7652 /* BlogView.swift in Sources */,
 				0A741EAD25B4E44700FE871A /* BlogModel.swift in Sources */,
+				0A98F3A125BCCCA3000FBC25 /* MapView.swift in Sources */,
 				0A0376F925B57B8400DC7652 /* UserModel+CoreDataProperties.swift in Sources */,
 				0A741E8325B4C5AB00FE871A /* Constants.swift in Sources */,
 				0A0376F825B57B8400DC7652 /* UserModel+CoreDataClass.swift in Sources */,

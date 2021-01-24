@@ -38,7 +38,7 @@ struct NetworkManager {
                 
                 if let response = response as? HTTPURLResponse,
                    response.statusCode != 200 {
-                    promise(.failure( NetworkError (code: response.statusCode, description: "code isnt 200") ) )
+                    promise(.failure( NetworkError (code: response.statusCode, description: "\(response.description)") ) )
                 }
                 
                 if let data = data {
@@ -96,7 +96,7 @@ struct NetworkManager {
                 if let data = data {
                     guard let decodedData = try? JSONDecoder().decode(T.self, from: data)
                     else {
-                        promise(.failure( NetworkError(description: "cant decode data")) )
+                        promise(.failure( NetworkError(description: "cant decode data from \(url.absoluteString)")) )
                         return
                     }
                     

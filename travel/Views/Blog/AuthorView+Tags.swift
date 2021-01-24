@@ -15,7 +15,7 @@ struct AuthorView_Tags: View {
     var body: some View {
         HStack {
             ForEach(blog.blogContent!.tags, id: \.self) { result in
-               Text ("#" + result)
+                Text ("#" + result).font(.system(size: 14, weight: .ultraLight, design: .rounded)).foregroundColor(Color.white)
             }
         }
         

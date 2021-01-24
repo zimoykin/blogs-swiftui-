@@ -31,33 +31,30 @@ public class UserModel: NSManagedObject {
         }
     }
     
-    func updateToken () throws -> Future <Void, NetworkError> {
+    func updateToken (completion: @escaping (Bool) -> Void) throws {
         
         let request: Future <User, Error> = NetworkManager.post(to: "\(K.server)api/users/refresh", body: try JSONEncoder().encode (RefreshToken(refreshToken: self.refreshToken!)))
         
-        return Future { [self] promise in
+        request.sink { (compl) in
+            switch compl {
+            case .failure(let error):
+                debugPrint(error)
+                completion(false)
+            //logout
+            case .finished:
+                debugPrint("fineshed")
+            }
+        } receiveValue: { [self] userData in
+            accessToken = userData.accessToken
+            refreshToken = userData.refreshToken
             
-            request.sink { (completion) in
-                switch completion {
-                case .failure(let error):
-                    debugPrint(error)
-                case .finished:
-                    debugPrint("fineshed")
-                }
-            } receiveValue: { [self] userData in
-                accessToken = userData.accessToken
-                refreshToken = userData.refreshToken
-                
-                if ((try? managedObjectContext?.save()) != nil) {
-                    promise(.success( () ))
-                } else {
-                    promise(.failure( NetworkError(code: 0, description: "refresh falls") ))
-                }
-                
-            }.store(in: &UserModel.canc)
-        }
-        
-        
+            if ((try? managedObjectContext?.save()) != nil) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+            
+        }.store(in: &UserModel.canc)
         
     }
     
@@ -65,11 +62,18 @@ public class UserModel: NSManagedObject {
         return NetworkManager.post(to: "\(K.server)api/users/login", login: username, password: password, token: nil)
     }
     
-    static func login (_ username: String, _ password: String, moc: NSManagedObjectContext) -> Future <UserModel, Never> {
+    static func login (_ username: String, _ password: String, moc: NSManagedObjectContext) -> Future <UserModel, Error> {
         
         return Future { promise in
-            authorize(username, password).sink { err in
-                print(err)
+            authorize(username, password).sink { completion in
+               
+                switch completion {
+                case .failure(let error):
+                    promise(.failure(error))
+                case .finished:
+                   debugPrint("login done")
+                }
+                
             } receiveValue: { (user) in
                 
                 let newUser = UserModel(context: moc)
@@ -90,4 +94,7 @@ public class UserModel: NSManagedObject {
         }
     }
     
+    func logout (moc: NSManagedObjectContext) {
+        moc.delete(self)
+    }
 }

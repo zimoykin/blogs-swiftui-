@@ -7,13 +7,14 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 
 class BlogModel: ObservableObject {
     
     @Published var blogContent: BlogContent?
     var current_image: String?
-    var images: [String]?
+    var images = [String:UIImage]()
     var id: UUID
 
     init (_ id: UUID) {
@@ -53,9 +54,16 @@ class BlogModel: ObservableObject {
             }
             
         } receiveValue: { images in
-            DispatchQueue.main.async {
-                self.images = images
+          
+            for image in images {
+                URLSession.shared.dataTask(with: URL(string: image)!) { data, response, error in
+                    guard let data = data else { return }
+                    DispatchQueue.main.async {
+                        self.images[image] = UIImage(data: data)
+                    }
+                }.resume()
             }
+            
         }.store(in: &cancellables)
 
     }
@@ -69,8 +77,26 @@ struct BlogContent: Codable {
     var image: String
     var tags: [String]
 }
+struct BlogInput: Codable {
+    var title: String
+    var description: String
+    var placeId: UUID
+    var tags: String
+    
+    init (title: String, description: String, tags: String, place: PlaceModel) {
+        
+        self.title = title
+        self.description = description
+        self.placeId = place.id
+        self.tags = tags
+    }
+    
+    func toData() throws -> Data? {
+        try JSONEncoder().encode(self)
+    }
+}
 
-class Blog: ObservableObject {
+class BlogList: ObservableObject {
     
     private var cancellables = [AnyCancellable]()
     @Published var blogs: [UUID]?
@@ -94,4 +120,30 @@ class Blog: ObservableObject {
 
     }
     
+    func saveBlog (
+        user: User,
+        blog: BlogInput,
+        completion: @escaping (BlogContent) -> () ) {
+     
+        let blog: Future <BlogContent, Error> = NetworkManager.post(to: "\(K.server)api/blogs/", token: user.accessToken, body: try? blog.toData()!)
+        blog.sink { (result) in
+            switch result {
+            case .failure(let error):
+                print (error)
+            case .finished:
+                print ("saveBlog success")
+            }
+        } receiveValue: { (blog) in
+            self.getPage(user: user)
+            completion(blog)
+        }.store(in: &cancellables)
+
+        
+        
+    }
 }
+
+//
+//this.httpClient.post<BlogModel>(`${K.server}api/blogs/`, JSON.stringify({
+//       title: title, description: description, placeId: this.placeid, tags: tags
+//     }), { headers: headers })

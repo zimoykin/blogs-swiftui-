@@ -10,8 +10,8 @@ import SwiftUI
 struct LoaderView: View {
     
     @State private var isLoading = false
-    @State private var heartSizeChanged = false
-    let picture = ["heart.fill", "location.fill", "sun.min.fill", "sparkle", "sun.max.fill", "moon.fill"].randomElement()!
+    @State private var LogoSize = false
+    let picture = ["heart.fill", "location.fill", "sun.min.fill", "cloud.sun.bolt.fill", "sun.max.fill", "moon.fill"].randomElement()!
     let color: Color = [.white, .yellow, .black].randomElement()!
     
     var body: some View {
@@ -23,12 +23,11 @@ struct LoaderView: View {
                 .scaleEffect(0.5)
                 .animation(.spring(response: 0.3, dampingFraction: 0.2, blendDuration: 0.1))
 
-            Image(systemName: picture)
-                .foregroundColor(.white)
+            Image(systemName: picture).renderingMode(.original)
                 .font(.system(size: 200))
                 .animation(nil)
-                .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
-                .opacity(heartSizeChanged ? 1.0 : 0.5)
+                .scaleEffect(LogoSize ? 1.0 : 0.5)
+                .opacity(LogoSize ? 1.0 : 0.5)
                 .animation(.spring(response: 0.3, dampingFraction: 0.2, blendDuration: 0.1))
         }.foregroundColor(color)
         .onAppear {
@@ -40,7 +39,7 @@ struct LoaderView: View {
     private func toggleSize () {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.heartSizeChanged.toggle()
+            self.LogoSize.toggle()
             toggleSize()
         }
     }

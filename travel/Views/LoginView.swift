@@ -17,13 +17,8 @@ struct LoginView: View {
             SecureField("password", text: $password)
                 .fixedSize(horizontal: true, vertical: true)
             Button("Login") {
-                UserModel.login(username, password, moc: moc).sink(receiveValue: {
-                   print ($0)
-                })
+                _ = UserModel.login(username, password, moc: moc)
             }.padding()
-            .onAppear {
-
-            }
         }
     }
     

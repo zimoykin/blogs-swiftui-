@@ -11,74 +11,67 @@ import Combine
 
 struct MainView: View {
     
-    @ObservedObject var blogPage = Blog()
     var user: UserModel
     var moc: NSManagedObjectContext
-    @State var errorText: String = ""
-    var title: String = "Blog"
+    @ObservedObject var bloglist = BlogList()
+    
+    @State var selectionTab: TabItem = .home
+    var movingTop = PassthroughSubject<Bool, Never>()
+    
+    
+    init(user: UserModel, moc: NSManagedObjectContext) {
+        self.user = user
+        self.moc = moc
+        UITabBar.appearance().barTintColor = .darkGray
+    }
     
     var body: some View {
         
-        TabView {
-            VStack {
+        TabView(selection: $selectionTab) {
+            ForEach(TabItem.allCases, id: \.self) { item in
                 
-                if let blogs = blogPage.blogs {
-                    VStack(alignment: .center, spacing: 0) {
-                        List{
-                            ForEach(blogs, id: \.uuidString) { result in
-                                BlogView(result, user: user)
-                            }
-                        }
-                    }.navigationBarTitle(Text(title))
-                } else {
-                    VStack(alignment: .center, spacing: 0) {
-                        if errorText != "" {
-                            Text("\(errorText)").italic().shadow(color: .gray, radius: 1, x: 1, y: 1)
-                        } else {
-                            if blogPage.blogs == nil {
-                                Text("loading")
-                                    .padding()
-                            }
-                        }
-                    }.onAppear {
-                        callgetBlogs()
-                    }.navigationBarTitle(Text(title))
+                switch item {
+                case .home:
+                    HomeView(parent: self, blogPage: bloglist, moc: moc, user: user)
+                        .tabItem {
+                            Image(systemName: HomeView.icon)
+                            Text(item.rawValue)
+                        }.tag(TabItem.home)
+                case .map:
+                    MapView()
+                        .tabItem {
+                            Image(systemName: MapView.icon)
+                            Text(item.rawValue)
+                        }.tag(item)
+                case .new:
+                    CreateNewView(user: user, blogList: bloglist)
+                        .tabItem {
+                            Image(systemName: CreateNewView.icon).renderingMode(.original)
+                            Text(item.rawValue)
+                        }.tag(item)
+                case .auth:
+                    AuthorizationView(user: user, moc: moc)
+                        .tabItem {
+                            Image(systemName: AuthorizationView.icon)
+                            Text(item.rawValue)
+                        }.tag(item)
+                case .contact:
+                    ContactsView()
+                        .tabItem {
+                            Image(systemName: ContactsView.icon)
+                            Text(item.rawValue)
+                        }.tag(item)
                 }
             }
-                 .tabItem {
-                     Image(systemName: "house.fill")
-                     Text("Blogs")
-             }
-             CreateNewView()
-                 .tabItem {
-                     Image(systemName: "plus.app.fill")
-                     Text("New Blog")
-             }
-            AuthorizationView(user: user, moc: moc)
-                 .tabItem {
-                     Image(systemName: "person.fill")
-                     Text("Authorization")
-             }
-            ContactsView()
-                .tabItem {
-                    Image(systemName:"creditcard.fill")
-                    Text("Contacts")
+        }.accentColor(.yellow)
+        .onTapGesture(count: 2) {
+            if selectionTab == .home {
+                movingTop.send (true)
             }
-            
-         }
-    }
-    
-    private func callgetBlogs () {
-        if user.isJwtOk(), let user = user.getUser() {
-            blogPage.getPage(user: user)
-        } else {
-            self.errorText = "token expired"
-            do {
-                try user.updateToken().map {
-                    callgetBlogs()
-                }
-            } catch { }
         }
     }
     
 }
+
+
+
