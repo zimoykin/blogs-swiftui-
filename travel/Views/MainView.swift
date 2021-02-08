@@ -38,7 +38,7 @@ struct MainView: View {
                             Text(item.rawValue)
                         }.tag(TabItem.home)
                 case .map:
-                    MapView()
+                    MapView(user: user)
                         .tabItem {
                             Image(systemName: MapView.icon)
                             Text(item.rawValue)

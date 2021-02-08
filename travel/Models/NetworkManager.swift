@@ -58,7 +58,7 @@ struct NetworkManager {
     }
     
     //MARK: - GET METHOD
-    static func get <T: Codable> (to address: String, params: [NetworkQuery], user: User) -> Future<T, Error> {
+    static func get <T: Codable> (to address: String, params: [NetworkQuery] = [NetworkQuery](), user: User) -> Future<T, Error> {
         
         return Future { promise in
             

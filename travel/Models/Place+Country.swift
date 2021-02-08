@@ -8,26 +8,27 @@
 import Foundation
 import Combine
 
-struct PlaceModel: Codable {
-   var id: UUID
-   var title: String
-   var description: String
-   var country: CountryModel
-   var image: [String]?
+struct PlaceModel: Codable, Identifiable {
+    var id: UUID
+    var title: String
+    var description: String
+    var country: CountryModel
+    var image: [String]?
+    var latitude: Double
+    var longitude: Double
 }
 
 struct CountryModel: Codable {
-   var id: UUID
-   var title: String?
-   var description: String?
+    var id: UUID
+    var title: String?
+    var description: String?
 }
 
 
 class Place: ObservableObject {
     
-     @Published var selected: PlaceModel?
-     private var cancellables = [AnyCancellable]()
-    
+    @Published var selected: PlaceModel?
+    private var cancellables = [AnyCancellable]()
     
     func getPlace (_ country: CountryModel, _ user: User, completion: @escaping ([PlaceModel]) -> Void) {
         
@@ -47,8 +48,22 @@ class Place: ObservableObject {
         } receiveValue: { val in
             completion(val)
         }.store(in: &cancellables)
-
         
+        
+    }
+    
+    func getAllPlaces (_ user: User, completion: @escaping ([PlaceModel]) -> Void) {
+        let place:Future<[PlaceModel], Error> = NetworkManager.get(to: "\(K.server)api/places", user: user)
+        place.sink { (completion) in
+            switch completion {
+            case .failure(let error):
+                debugPrint(error)
+            case .finished:
+                debugPrint("done")
+            }
+        } receiveValue: { val in
+            completion(val)
+        }.store(in: &cancellables)
     }
     
 }
@@ -63,9 +78,9 @@ class Country: ObservableObject {
     func getCountryList (user: User, completion: @escaping ([CountryModel]) -> Void) {
         
         let country:Future<[CountryModel], Error> = NetworkManager.get(to: "\(K.server)api/countries/list",
-                                                                   params: [NetworkQuery](), user: user)
+                                                                       params: [NetworkQuery](), user: user)
         country.sink { result in
-                
+            
             switch result{
             case .failure(let error):
                 print ("getCountryList \(error)")
@@ -74,10 +89,10 @@ class Country: ObservableObject {
             }
             
             
-            } receiveValue: { list in
-                completion (list)
-            }.store(in: &cancellables)
-
+        } receiveValue: { list in
+            completion (list)
+        }.store(in: &cancellables)
+        
         
         
     }
